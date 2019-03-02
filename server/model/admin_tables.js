@@ -9,11 +9,11 @@ const Tas_greeting = dbcon_1.sequelize.define('tas_greeting', {
       autoIncrement: true
     },
     GREETTING: {
-      type: Sequelize.STRING(140),
+      type: dbcon_1.Sequelize.STRING(140),
       allowNull: true
     },
     DEFAULT: {
-      type: Sequelize.Sequelize.BOOLEAN,
+      type: dbcon_1.Sequelize.Sequelize.BOOLEAN,
       allowNull: true
     },
   
