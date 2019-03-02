@@ -4,7 +4,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require('express');
 const body_parser_1 = require("body-parser");
-const public_1 = require("./routes/public");
+const public_1 = require("./server/routes/public");
 
 var cors = require('cors');
 const app = express();
