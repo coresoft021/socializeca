@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const dbcon_1 = require("../routes/dbcon");
 const Tas_greeting = dbcon_1.sequelize.define('tas_greeting', {
        ID: {
-      type: Sequelize.INTEGER(6),
+      type: dbcon_1.Sequelize.INTEGER(6),
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
