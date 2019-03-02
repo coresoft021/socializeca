@@ -1,27 +1,24 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const dbcon_1 = require("../routes/dbcon");
-const Tax_admin = dbcon_1.sequelize.define('tax_admin', {
-    ID: {
-        type: dbcon_1.Sequelize.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true
+const Tas_greeting = dbcon_1.sequelize.define('tas_greeting', {
+       ID: {
+      type: Sequelize.INTEGER(6),
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
     },
-    TAX_NAME: {
-        type: dbcon_1.Sequelize.STRING,
-        allowNull: true
+    GREETTING: {
+      type: Sequelize.STRING(140),
+      allowNull: true
     },
-    TAX_RATE: {
-        type: dbcon_1.Sequelize.INTEGER,
-        allowNull: true
+    DEFAULT: {
+      type: Sequelize.Sequelize.BOOLEAN,
+      allowNull: true
     },
-    IS_ACTIVE: {
-        type: dbcon_1.Sequelize.BOOLEAN,
-        allowNull: true
-    },
-}, {
-    tableName: 'tax_admin',
-    timestamps: false
+  
+  }, {
+    tableName: 'tas_greeting',
+     timestamps: false
 });
-exports.Tax_admin = Tax_admin;
+exports.Tas_greeting = Tas_greeting;
