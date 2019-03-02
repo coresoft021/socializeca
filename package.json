@@ -1,30 +1,19 @@
 {
-  "name": "angular2-express-starter",
-  "version": "1.0.0",
-  "description": "Starter application of Angular2 with Express",
-  "main": "server/app.js",
-  "license": "MIT",
+  "name": "heroku-app-angular",
+  "version": "0.0.0",
   "scripts": {
-    "startx": "concurrently --kill-others \"npm run _server:run\" \"ng serve --aot --progress=false --proxy-config proxy.conf.json\"",
-     "start": "concurrently --kill-others \"npm run _server:run\" \"http-server -p 8080 ./dist/core/public/\"",
-    "lint:client": "ng lint",
-    "lint:server": "tslint './server/**/*.ts' -c ./server/tslint.json --fix",
-    "test:client": "ng test",
-    "e2e:client": "ng e2e",
-    "build": "npm run _server:build",
-    "_server:run": "tsc -p ./server && concurrently \"tsc -w -p ./server\" \"nodemon dist/server/bin/www.js\" ",
-    "_server:build": "tsc -p ./server",
-    "postinstall": "npm run build"
-  },
-  "author": "Vlado Tešanović",
-  "repository": {
-    "url": "https://github.com/vladotesanovic/angular2-express-starter"
+    "ng": "ng",
+    "start": "node start-server.js",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "postinstall": "ng build --prod"
   },
   "private": true,
   "dependencies": {
-
     "@angular/cli": "7.2.3",
-    "@angular/animations": "7.2.3",
+     "@angular/animations": "7.2.3",
     "@angular/cdk": "7.2.2",
     "@angular/common": "7.2.3",
     "@angular/compiler": "7.2.3",
@@ -37,12 +26,8 @@
     "@angular/platform-browser-dynamic": "7.2.3",
     "@angular/router": "7.2.3",
     "@ngui/auto-complete": "^2.0.0",
-    "async": "2.4.0",
     "bootstrap": "4.2.1",
     "core-js": "2.6.3",
-    "body-parser": "~1.17.1",
-    "compression": "1.6.2",
-    "cookie-parser": "~1.3.5",
     "hammerjs": "2.0.8",
     "jquery": "3.3.1",
     "popper.js": "1.14.7",
@@ -53,40 +38,34 @@
     "zone.js": "0.8.29",
     "express": "^4.16.3",
     "path": "^0.12.7"
-    "pg": "7.4.0",
-    "http-server": "^0.11.1",
-    "pg-hstore": "2.3.2",
-    "pg-native": "1.10.0",    
-    "serve-favicon": "2.3.0",
-    "validator": "7.0.0",    
-    "sequelize": "4.22.6",
-    "sequelize-cli": "4.0.0",
-    "core-js": "^2.5.1",
-    "list.js": "^1.5.0",
-    "normalize.css": "^5.0.0",
-    "ts-helpers": "^1.1.2",
-    "ts-node": "~3.3.0",
-    "tslint": "^4.5.1",
-    "typescript": "^2.5.3",
-    "uuid": "^3.0.1",
-    "underscore": "^1.8.3"
-   
-    
+
   },
   "devDependencies": {
-    "codelyzer": "~3.1.2",
-    "concurrently": "^3.5.0",
-    "jasmine-core": "~2.5.2",
-    "jasmine-spec-reporter": "~3.2.0",
-    "karma": "~1.5.0",
-    "karma-chrome-launcher": "~2.0.0",
-    "karma-cli": "~1.0.1",
-    "karma-coverage-istanbul-reporter": "^0.2.0",
-    "karma-jasmine": "~1.1.0",
+    
+    "@angular-devkit/build-angular": "~0.10.0",
+    "@angular/cli": "~7.0.2",
+    "@angular/compiler-cli": "~7.0.0",
+    "@angular/language-service": "~7.0.0",
+    "@types/node": "~8.9.4",
+    "@types/jasmine": "~2.8.8",
+    "@types/jasminewd2": "~2.0.3",
+    "codelyzer": "~4.5.0",
+    "jasmine-core": "~2.99.1",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~3.0.0",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-coverage-istanbul-reporter": "~2.0.1",
+    "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "karma-remap-istanbul": "^0.2.1",
-    "nodemon": "1.17.3",
-    "protractor": "~5.1.0",
-    "webdriver-manager": "10.2.5"
+    "protractor": "~5.4.0",
+    "ts-node": "~7.0.0",
+    "tslint": "~5.11.0",
+    "typescript": "~3.1.1",
+    "enhanced-resolve": "^4.1.0"
+
+  },
+  "engines": {
+    "node" : "10.8.0",
+    "npm" : "6.2.0"
   }
 }

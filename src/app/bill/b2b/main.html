@@ -1,0 +1,638 @@
+<section style="height: 10px;" id="non-printable">
+  <a routerLink="/dash" routerLinkActive="active">home</a>
+</section> 
+
+
+<section class="prem-header-section" id="non-printable">
+
+  <div style="display:inline-block; width: 69%;">
+  </div>
+ <div style="display: inline-block;width: 30%;font-size: 20px;font-weight: bold;height: 20px;">
+				<label for="invoice-number">Invoice No #</label> <input style="width: 130px;" type="text" id="invoice-number"  
+         [attr.disabled]="true" [(ngModel)]="dip_invo_number">
+</div>
+
+	<div style="font-size: 22px; display: inline-block;width: 68%;text-align:center; font-weight: bold; ">
+		   	INVOICE (B2B)
+  </div>
+
+
+
+<div style="display: inline-block;width: 30%;"> 
+		 <label> Issue date : </label>  
+<div style="display: inline-block;width: 30%;" *ngIf="date_change_flag === 0">
+     <input matInput [matDatepicker]="from_date"   id="non-printable" style="width:10px"  placeholder="" (dateInput)="catch_invoice_date(from_date)">
+  <mat-datepicker-toggle matSuffix [for]="from_date" id="non-printable" ></mat-datepicker-toggle>
+  <mat-datepicker #from_date id="non-printable"></mat-datepicker>
+  
+</div>
+   
+ <label *ngIf="date_change_flag === 2" > {{post_invo.invoice_date  | date : 'longDate'}} </label> 
+
+</div>
+
+
+
+</section>  
+
+
+<section id="non-printable">
+
+<div class="row"> 
+
+
+ 
+
+
+
+
+    <div class="col-md-5">
+    <label style="margin-left:2px;">Buyer Name : </label> 
+    
+       <div style="display:inline-block;width: 70%;">
+      <input ngui-auto-complete #autos class="form-control" 
+             style="width:380px;font-size: 18px;border-color:#52c3bb;"  [source]="arrayOfCusValues"  
+            placeholder="Customer Search"    
+              (blur)="cus_blur(autos.value)"
+              list-formatter="(CUSTOMER_NAME) ADDRESS"
+              display-property-name="CUSTOMER_NAME"> 
+    </div> 
+   </div> 
+  
+    <div class="col-md-4">
+      <label> Address : </label> 
+     <div style="display:inline-block;">
+      <input type="text" style="width:320px;border-color:#52c3bb;" class="form-control"  [(ngModel)]="post_invo.cus_address">
+     </div>
+     </div>
+
+       <div class="col-md-3">
+      <label> City : </label> 
+     <div style="display:inline-block;">
+      <input type="text" style="width:220px;border-color:#52c3bb;" class="form-control"  [(ngModel)]="post_invo.cus_city">
+     </div>
+     </div>
+
+
+     
+      
+     
+       <div class="col-md-3" style="margin-top:10px;" >
+      <label style="margin-left:2px;"> Phone : </label> 
+     <div style="display:inline-block;">
+         <input type="text" class="form-control" style="width: 220px;border-color:#52c3bb;
+    margin-left: 4px;" placeholder="phone" id="customer-name" 
+       [(ngModel)]="post_invo.cus_phone">
+      
+     </div>
+     </div>
+
+    
+     
+       <div class="col-md-3" style="margin-top:10px;" >
+      <label> Phone 2: </label> 
+     <div style="display:inline-block;">
+         <input type="text" class="form-control" style="width: 220px;border-color:#52c3bb;
+    margin-left: 4px;" placeholder="phone2" id="customer-name" 
+       [(ngModel)]="post_invo.cus_phone2">
+      
+     </div>
+     </div>
+
+
+     
+
+
+     <!-- <div class="col-md-3" style="margin-top:10px;" >
+      <label> Transportation Mode: </label> 
+     <div style="display:inline-block;">
+        <input type="text" style="width: 220px;border-color:#52c3bb;" class="form-control"
+   [(ngModel)]="post_invo.tran_mode">
+    
+      
+     </div>
+     </div> -->
+
+
+
+
+
+  <!-- <div class="col-md-3" style="margin-top:10px;" >
+      <label> Vehichle No: </label> 
+     <div style="display:inline-block;">
+     <input type="text" style="width: 150px;border-color:#52c3bb;"  class="form-control" [(ngModel)]="post_invo.veh_no">
+    
+      
+     </div>
+     </div> -->
+
+
+     <!-- <div class="col-md-3" style="margin-top:10px;" >
+      <label> Place Of Supply: </label> 
+     <div style="display:inline-block;">
+     <input type="text" style="width: 190px; border-color:#52c3bb;"  class="form-control" [(ngModel)]="post_invo.place_of_supply">
+    
+      
+     </div>
+     </div> -->
+
+     
+     <!-- <div class="col-md-1" style="margin-top:10px;" >
+      <label> Bundles:  </label> 
+     <div style="display:inline-block;">
+     <input type="text" style="width: 50px;border-color:#52c3bb;"  class="form-control" [(ngModel)]="post_invo.no_bundles">
+    
+      
+     </div>
+     </div> -->
+
+     
+
+ </div>
+
+
+</section>  
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+<section id="non-printable" style="width:100%; height:10px;"> 
+            
+</section>          
+          
+
+<section id="non-printable"> 
+
+
+<mat-card class="header-card">
+            <div style="margin-top: -18px; display: inline-block;width: 13%;">SI </div> 
+            <div style="display: inline-block; width: 18%;"> Description </div>
+            <div style="display: inline-block; width: 8%;"> HSN Code </div>
+            <div style="display: inline-block; width: 8%;"> GrossWeight </div>
+            <div style="display: inline-block; width: 5%;"> Per </div>
+
+            <div style="display: inline-block; width: 8%;"> StoneWeight </div>
+            <div style="display: inline-block; width: 7.7%;"> NetWeight </div> 
+            <div style="display: inline-block; width: 9.2%;">  </div> 
+            <div style="display: inline-block; width: 13%;"> GrossAmt </div>
+           <div style="display: inline-block; width: 2%;"> 
+               <button *ngIf="isPrint" [disabled]="item_remove_flag()" style="width:100%;" (click)="removeItem()">X</button>
+
+           </div>   
+
+</mat-card>  
+
+
+
+</section>
+
+<section id="non-printable">
+ 
+</section>  
+
+<section id="non-printable" *ngIf="isServer_res">
+
+<div class="items-card"  *ngFor="let item of post_invo.items; let k=index " ng-animate="'slide-down'">
+
+   <mat-card class="item-card">
+      <div style=" width: 4%; display: inline-block; ">
+              {{k+1}} 
+     </div>
+
+        <div style="width: 24%; display: inline-block; ">
+        <input style="width: 98%; text-align:center;border-color:#cbcfd6;border-radius: 4px;"   ngui-auto-complete #autos [(ngModel)]="item.PRODUCT_NAME"   [source]="arrayOfKeyValues"  
+            placeholder="Description" (focus)="focus_one(k)"  
+              (blur)="change_one(autos.value)"
+              list-formatter="(HSN_CODE) PRODUCT_NAME"
+              display-property-name="PRODUCT_NAME">
+
+      </div>  
+
+         <div style="width:2%; display:inline-block;"> </div>
+    <div style="width:8%; display:inline-block;">
+        
+         <input  [disabled]="true"  style="text-align: center;border-color:#cbcfd6;border-radius: 4px;" #box5 [(ngModel)]="item.HSN_CODE" size="8" placeholder=" "  > 
+        
+    </div>
+
+     <div style="width : 9.7%;display: inline-block;">
+        
+           <input #box style="text-align:center;border-color:#cbcfd6;border-radius: 4px;" size="8" 
+            placeholder="gross"  (focus)="focus_one(k)" 
+         (keyup)="change_two(box.value)"
+         [(ngModel)]="item.GROSS_WEIGHT">  
+        
+        
+    </div>
+
+    <div style=" width : 4%;display: inline-block;">
+
+       {{item.UNIT}}
+  
+     </div>
+
+       <div style="width : 7.3%;display: inline-block;">
+        
+           <input #box2 [(ngModel)]="item.STONE_WEIGHT" style="text-align:center;border-color:#cbcfd6;border-radius: 4px;" size="7" placeholder="stone" (keyup)="change_three(box2.value)"  >  
+        
+        
+    </div>
+        <div style="width : 8.35%;display: inline-block;">
+        
+           <input [disabled]="true"  style="text-align:center;border-color:#cbcfd6;border-radius: 4px;" size="8" placeholder="PRICE" [(ngModel)]="item.NET_WEIGHT" >  
+        
+        
+    </div>
+
+
+
+    <div style=" width : 12%;   display: inline-block;">
+        <!-- <input #box3 [(ngModel)]="item.PRICE_INCL_TAX" style="text-align:center;" 
+        (keyup)="change_three(box3.value)" (focus)="focus_one(k)"  size="7" placeholder=" " >  -->
+            
+    </div>
+
+     <div style=" width : 8%;display: inline-block; ">
+  
+
+       {{item.NET_TOTAL | number : '1.2-2'}}    
+
+
+    </div> 
+     <div style="width:2%; display:inline-block">
+  
+         <button *ngIf="isPrint"   style="width:100%;" (keydown.f4)="addItem()" (click)="addItem()"
+          (keydown.ArrowDown)="addItem(k)" >+</button>
+
+   </div>
+
+   <div style="width:.5%; display:inline-block">
+   </div>
+   
+  <div style="width:2%; display:inline-block">
+  
+       
+
+
+   </div>  
+
+
+   </mat-card>
+
+</div>
+
+</section>
+
+<section class="sumss" id="non-printable">
+      
+        <table cellpadding="0" cellspacing="0">
+          <tr>
+            <th>Net Total</th>
+            <td>{{post_invo.sub_total | number : '1.2-2'}}</td>
+          </tr>
+          
+          <tr data-iterate="tax">
+            <th>CGST</th>
+            <td> {{post_invo.total_tax/2 | number : '1.2-3'}}</td>
+          </tr>
+          
+          <tr class="">
+            <th>SGST</th>
+            <td>{{post_invo.total_tax/2 | number : '1.2-3'}}</td>
+          </tr>
+          
+          <tr class="amount-total">
+            <th>Round off</th>
+            <td>{{frac | number : '1.2-3'}}</td> 
+          </tr>
+          
+          
+
+         <tr class="grand-total">
+            <th>Grand Total:</th>
+            <td>{{floor}}</td>
+          </tr>
+        </table>
+
+        <div class="clearfix"></div>
+        
+      </section>
+
+
+<section id="non-printable">
+
+<div class="col-sm-12">
+
+  <div class="row">
+
+     <div class="col-sm-4" id="non-printable"style="margin-top: -2.5%;">   
+          <span class="input-group-addon" id="basic-addon3">Total Paid  </span>
+          <input type="text" class="form-control " (focus)="on_focus_total_paid()" [(ngModel)]="post_invo.total_paid_today"              style="width: 70%; border-color : #1dc;" 
+          (blur)="blur_on_paid_today()"  id="basic-url" aria-describedby="basic-addon3">
+     </div>
+
+    <div class="col-sm-4" id="non-printable" style="margin-top: -2.5%;">
+      <span class="input-group-addon" id="basic-addon3" >Total Due </span>
+      <input type="text"  class="form-control " [(ngModel)]="post_invo.total_due" style="width: 70%; border-color : #1dc; 
+      " id="basic-url" aria-describedby="basic-addon3">
+    </div>   
+
+
+    <div  class="col-sm-3" id="non-printable">
+     
+     
+    <button [disabled]="isClickedOnce"  class="btn btn-primary"  
+            (click)="print_invoice()">Print</button>
+
+      <!-- <button [disabled]="iscash_enabled()" class="btn btn-primary" style="margin-top: 3%;"
+        (click)="cash_reciept()">Genrate cash recipt</button> -->
+    </div>
+
+</div>
+</div>
+
+</section>
+
+
+
+
+
+
+
+<section *ngIf="isServer_res" style="width:100%;height:1510px;border:1px solid" id="printable"> 
+   <div style="font-size:18px; font-weight:bold;padding-left:10px;border-bottom:1px solid">
+     GST IN : {{company_gst}}  </div>
+  <section style="width:100%;height:100px;border-bottom:1px solid;">
+    <div style="font-size:32px;font-weight:bold;"> 
+      {{company_name}} 
+    </div>
+  </section> 
+
+  <section style="width: 100%;height:70px;border-bottom:1px solid #7bd6b3">
+
+    
+           <div style="padding-left:5px;border-top: 1px solid;border-bottom: 1px solid;display:inline-block;width: 50%;">
+              Invoice Number: {{dip_invo_number}}
+             <div>              Date Of Invoice : {{post_invo.invoice_date | date : 'longDate'}} </div>
+           </div>
+
+                    
+
+  </section>
+
+  
+</section>  
+<!-- 
+<section style="width:100%;height:100px;">
+
+ <div style="font-size:18px; font-weight:bold;padding-left:10px;border-bottom:1px solid">
+     GST IN : 32AZRPA9204G1ZK </div>
+
+ 
+<img src="../../assets/slogo.jpg" alt="Girl in a jacket" style="width:120px;height:80px;margin-left:3%;margin-top:1px;">
+
+
+ <div style="height:20px;left: 40%;padding-left:41%;font-weight:bold;margin-top:-4%;">  INVOICE(B2B)  </div>
+  <div style="height:20px;left: 40%;padding-left:31%;font-weight:bold;margin-top:-8%;font-size:32px;font-weight:bold;">  Friends Hardware Stores  </div>
+</section>   
+
+<section style="width: 100%;height:70px;border-bottom:1px solid #7bd6b3">
+
+
+<div>
+           <div style="padding-left:5px;border-top: 1px solid;border-bottom: 1px solid;display:inline-block;width: 50%;">
+              Invoice Number: {{dip_invo_number}}
+             <div>              Date Of Invoice : {{post_invo.invoice_date | date : 'longDate'}} </div>
+
+                    </div>  
+
+ <div style="border-top:1px solid; border-left: 1px solid;border-bottom: 1px solid;padding-left:5px;display: inline-block;width: 50%;">
+           Place of supply: {{post_invo.place_of_supply}}
+
+           <div class=""> No of Bundles : {{post_invo.no_bundles}} </div>
+                    </div>  
+
+</div>
+
+<div style="height:30px; background-color:#d3e6d3;">
+
+ <div style="display: inline-block;width: 33%;padding-left:5px;padding-top:9px">  State : Kerala  &nbsp; &nbsp;      State Code : 32 </div> 
+  <div style="display: inline-block;width: 33%;padding-top:9px;"> Transportation Mode : {{post_invo.tran_mode}} </div> 
+  <div style="display: inline-block;width: 33%;padding-top:2px;"> Vehichle No: {{post_invo.veh_no}}</div>
+
+
+</div>
+
+</section>  
+
+<section style="width:100%; height: 105px;">
+
+<div style="width:50%;height:100%;border-top:1px solid; display:inline-block;">
+<div style="font-size:19px; font-weight:bold;padding-left:20px;"> Seller </div>
+<div style="padding-left:5px;">
+Friends Hardware Stores
+<div>  Randam No  </div>
+<div> Kattavila, Kollam </div>
+<div>  <img src="../../assets/old_phone.svg" style="width:16px;padding-top:2px;" />  &nbsp; 9895853185 , 8590555005 </div>
+<div > &nbsp; </div>
+
+</div>   
+
+</div>
+
+<div style="width:50%;height:100%;border-top:1px solid; border-left: 1px solid; display:inline-block;">
+  <div style="font-size:19px; font-weight:bold;padding-left:20px;"> Buyer </div>
+<div style="padding-left:5px;">  &nbsp;
+{{ post_invo.cus_name }} 
+
+<div>  &nbsp; {{post_invo.cus_street}}  </div>
+<div>  &nbsp; {{post_invo.cus_city}} </div>
+<div>  <img src="../../assets/old_phone.svg" style="width:16px;padding-top:2px;" />  &nbsp;  {{post_invo.cus_phone}} , {{ post_invo.cus_phone2 }}</div>   
+
+
+<div style="font-weight:bold;">  &nbsp; GSTIN / UIN :{{post_invo.cus_gst}} </div> 
+</div>
+
+</div>
+
+
+</section>  
+
+
+<section id="container" class="table-section" style="height:432px;background-color:#dde;width: 100%;border-bottom:1px solid;border-top:1px solid;">
+
+<table id="navi"  style="width:100%;">
+  <tr style="border-bottom: 1px solid;">  
+         <th style="width:4%; border-right:1px solid;padding-left:5px;padding-top:7px;">SN</th>
+         <th style="width:45%;border-right:1px solid;padding-left:5px;"> Description </th>
+         <th style="width:25px;border-right:1px solid; padding-left:5px;"> HSN / SAC Code </th>
+          <th style="width:8%; border-right:1px solid;padding-left:5px;"> Qty </th>
+         <th style="width:7%;border-right:1px solid;padding-left:3px;"> unit </th>
+         
+          <th style="width:20px; border-right:1px solid;padding-left:3px;"> price </th>
+         <th style="width:40px;border-right:1px solid;padding-left:5px;"> Amount </th>
+         
+   </tr>       
+     <tr style="height:415px;" >
+
+
+     
+       
+     
+        <td style="border-right: 1px solid;border-bottom: 1px solid">  </td>  
+        <td style="border-right: 1px solid;border-bottom: 1px solid">  </td>   
+        <td style="border-right: 1px solid;border-bottom: 1px solid">  </td>  
+         <td style="border-right: 1px solid;border-bottom: 1px solid">  </td>  
+        <td style="border-right: 1px solid;border-bottom: 1px solid">  </td> 
+         <td style="border-right: 1px solid;border-bottom: 1px solid">  </td>  
+        <td style="border-right: 1px solid;border-bottom: 1px solid">  </td> 
+     
+     
+       
+   </tr>  
+
+  </table>
+
+<div style="display:inline-block; width:100%;height:47px;"> </div>
+
+   <div style="width:100%;" *ngFor="let item of post_invo.items; let k=index " ng-animate="'slide-down'" style="height: 35px;">
+
+         
+     <div style="display:inline-block;width:5%;padding-left:7px;">
+       {{k+1}}
+     </div>
+   
+
+   <div style="display:inline-block;width:43.2%; ">
+      {{item.PRODUCT_NAME}}
+     </div>
+
+     <div style="display:inline-block;width:11.6%; text-align: center; ">
+      {{item.HSN_CODE}}
+     </div>
+
+     <div style="display:inline-block;width:6%; text-align: center; ">
+       {{item.QUANTITY}}
+     </div>
+
+     
+     <div style="display:inline-block;width:10%; text-align: center;">
+        {{item.UNIT}}
+     </div>
+
+      <div style="display:inline-block;width:9%;margin-left:-10px; text-align: center;">
+        {{item.PRICE}}
+     </div>
+
+       <div style="display:inline-block;width:15%; text-align: center;">
+       {{item.QUANTITY * item.PRICE  | number : '1.2-2' }}   
+         
+     </div>
+     
+   </div>   
+
+
+
+
+</section>
+
+<section style="border-bottom:1px solid;height:80px;" > 
+
+<div style="display:inline-block;width:83.9%;height:80px;margin-top:5px;">
+  <div>  &nbsp; </div>
+<div style="padding-left:3px;margin-top:5px;" > Add : CGST   @  {{post_invo.items[0].TAX /2}} %  </div> 
+<div style="padding-left:3px;" > Add : SGST   @ {{post_invo.items[0].TAX /2}} % </div>
+<div style="padding-left:3px;" > Add : Round-off </div>    
+</div>
+<div style="display:inline-block;width:20%;height:75px;margin-top:5px; position:absolute; border-left:1px solid">
+<div style="padding-left:5px; padding-bottom:1px;" > {{post_invo.sub_total  | number : '1.2-2'}} </div>
+<div style="padding-left:5px; margin-top:5px;" >     {{post_invo.total_tax/2   | number : '1.2-3'}} </div>
+<div style="padding-left:5px;" >     {{post_invo.total_tax/2   | number : '1.2-3'}} </div>
+<div style="padding-left:5px;" > {{frac  | number : '1.2-3'}}  </div>
+  </div>  
+
+</section>  
+
+<section style="width:100%; height:100px;background-color:#3de;border-bottom:1px solid;">
+  <div style="width:85%;display:inline-block;padding-left:65%;font-weight:bold;font-size:18px;"> 
+    Grand Total : 
+  </div>
+   <div style="width:14%;display:inline-block;font-weight:bold;font-size:18px;"> 
+     {{floor | number : '1.2-2'}}
+  </div>
+
+<table style="width:64%">
+  <tr style="border-bottom: 1px solid">
+           <th style="padding-left:20px;"> Tax Rate </th>
+           <th style="padding-left:20px;"> Taxable Amt </th>
+           <th style="padding-left:20px;"> CGST </th>
+           <th style="padding-left:20px;"> SGST </th>
+           <th style="padding-left:20px;"> Total Tax </th>
+
+  </tr>  
+
+  <tr>
+          <td style="padding-left:35px;">  {{post_invo.items[0].TAX}}  </td>
+          <td style="padding-left:23px;"> {{post_invo.sub_total  | number : '1.2-2'}}</td>
+          <td style="padding-left:23px;"> {{post_invo.total_tax/2   | number : '1.2-2'}} </td>
+          <td style="padding-left:23px;"> {{post_invo.total_tax/2   | number : '1.2-2'}} </td>
+          <td style="padding-left:23px;"> {{post_invo.total_tax  | number : '1.2-2'}}  </td>
+
+  </tr>
+
+</table>  
+<div style="width:100%;padding-left: 10px;font-size: 17px;font-weight: bold;padding-top:15px">
+{{fig_main}}
+</div>  
+
+
+</section>  
+
+<section id="container">
+
+<div id="infoi" style="margin-left:51%;margin-top:1%;"> Recivers Signature : </div> 
+<div id="infoi" style="margin-left:70%;margin-top:5.5%;font-weight:bold;">  For Friends Hardware Stores </div> 
+<div id="infoi" style="margin-left:79%;margin-top:12.5%;">  Authorized signatory. </div> 
+<div id="infoi"style="margin-left:10%;margin-top:5%;">  1. Goods once sold will not be taken back. </div> 
+<div id="infoi"style="margin-left:10%;margin-top:10%;">  2. Subject to Quilon Jurisdiction only </div> 
+<table style="width:100%;border-bottom:1px solid;border-top:1px solid;">
+<tr>
+    <th rowspan="2">Terms & Conditions:</th>
+    <td style="border-left:1px solid;height: 40px; background-color:red;width:50%;">  </td>
+  </tr>
+  <tr>
+    <td style="border-left:1px solid ; border-top:1px solid;height: 70px; background-color:blue;"> 
+
+         
+      
+        </td>
+  </tr>
+</table> 
+
+
+
+
+</section>   
+
+<section class="footer-section">
+Notes : 
+</section>   -->
+
+
+
+
