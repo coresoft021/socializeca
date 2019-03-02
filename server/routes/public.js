@@ -5,7 +5,7 @@ const express_1 = require("express");
 const dbcon_1 = require("./dbcon");
 const publicRouter = express_1.Router();
 exports.publicRouter = publicRouter;
-const Op = dbcon_1.Sequelize.Op;
+
 
 
 
