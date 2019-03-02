@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const greeting_1 = require("../model/admin_table");
+const greeting_1 = require("../model/admin_tables");
 const dbcon_1 = require("./dbcon");
 const publicRouter = express_1.Router();
 exports.publicRouter = publicRouter;
