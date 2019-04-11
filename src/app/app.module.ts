@@ -17,7 +17,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login';
 import { DashComponent } from './dash/dash';
 import { HomeComponents } from './home/home';
-import { Bill_b2b } from './bill/b2b/main';
+
 
 import { AuthGuard } from './services/auth.guard';
 import { DataService } from './services/data.service';
@@ -112,7 +112,7 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatTreeModule, ],
-  declarations: [ AppComponent, LoginComponent,DashComponent,HomeComponents,Bill_b2b ],
+  declarations: [ AppComponent, LoginComponent,DashComponent,HomeComponents ],
    providers: [AuthenticationService,AuthGuard,DataService,UpdateService],
   bootstrap:    [ AppComponent ]
 })
