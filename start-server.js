@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express = require('express');
 const body_parser_1 = require("body-parser");
 const public_1 = require("./server/routes/public");
+const cdb_1 = require("./server/routes/cdb");
 
 var cors = require('cors');
 const app = express();
@@ -14,6 +15,8 @@ app.use(cors());
 app.use(body_parser_1.json());
 app.use(body_parser_1.urlencoded({ extended: true }));
 app.use("/api/public", public_1.publicRouter);
+app.use("/api/cdb", public_1.cdbRouter);
+
 app.use(express.static(__dirname + '/dist/heroku-app-angular'));
 app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname + '/dist/heroku-app-angular/index.html'));
