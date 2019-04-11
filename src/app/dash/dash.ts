@@ -12,12 +12,15 @@ export class DashComponent  {
   
 
  ngOnInit() {
-   
+    this.get_subs()
   }
   constructor(private ag : AuthGuard,private _formBuilder: FormBuilder,private router: Router ) { }
   
  
-
+get_subs()
+  {
+    
+  } 
    logout()
   {
     this.ag.token=false;
