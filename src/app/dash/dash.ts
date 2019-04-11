@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthGuard } from '../services/auth.guard';
 import  { main_model } from './model';
-import { DataService } from '../../services/data.service';
+import { DataService } from '../services/data.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
