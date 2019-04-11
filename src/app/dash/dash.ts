@@ -10,7 +10,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class DashComponent  {
   
-
+ view : boolean = false;
  ngOnInit() {
     this.get_subs()
   }
