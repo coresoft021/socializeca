@@ -10,7 +10,7 @@ const cdb_1 = require("./server/routes/cdb");
 var cors = require('cors');
 const app = express();
 const path = require('path');
-const port = process.env.PORT || 8081;
+
 app.use(cors());
 app.use(body_parser_1.json());
 app.use(body_parser_1.urlencoded({ extended: true }));
