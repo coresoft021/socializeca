@@ -22,7 +22,7 @@ len : number  = 0;
  ngOnInit() {
               this.get_customers_subs_list()
              }
-  constructor(private ag : AuthGuard,private _formBuilder: FormBuilder,private router: Router ) { }
+  constructor(private ag : AuthGuard,private _formBuilder: FormBuilder,private router: Router,private ds : DataService ) { }
   
  
 get_customers_subs_list()
