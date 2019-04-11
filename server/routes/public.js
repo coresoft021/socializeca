@@ -1,43 +1,44 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const greeting_1 = require("../model/admin_tables");
 const dbcon_1 = require("./dbcon");
+const ad_min = require("../model/admin_table");
+const subs_min = require("../model/feed_table");
+
 const publicRouter = express_1.Router();
 exports.publicRouter = publicRouter;
+const Op = dbcon_1.Sequelize.Op;
 
 
+publicRouter.get("/build_a_m", (request, response) => {
 
-publicRouter.get("/cdb", (request, response) => {
-    greeting_1.Tas_greeting.sync({ force: true }).then(() => {
-        // Table created
-        return third_party_1.Third_party.create({
-            GREETTING: 'Hancock'
+ad_min.Ad_min.sync({ force: true }).then(() => {
+        //Table created
+        return ad_min.Ad_min.create({
+            USER_NAME: 'green'
         });
     });
-    return response.json({ success: true, msg: 'found' });
-});
+    return response.json({ success: true, msg: 'CREATED' });
 
-publicRouter.get('/list_greet', (request, response) => {
-    greeting_1.Tas_greeting.findAll({
-       
-    }).then(res => {
-        if (res) {
-            response.send(res);
-        }
-        else {
-            return response.json({ success: false, msg: 'Nothing found' });
-        }
+})
+
+
+publicRouter.get("/build_f_m", (request, response) => {
+
+subs_min.Subs_req.sync({ force: true }).then(() => {
+        //Table created
+        return subs_min.Subs_req.create({
+            SUBS_REQ_NO: 0
+        });
     });
-});
+    return response.json({ success: true, msg: 'CREATED' });
+
+})
+
 publicRouter.get("/about", (request, response) => {
     response.json({
         Devoloper: "Premji Thankaji",
-        Framework: "A6.0 + sequlize + nodejs",
+        Framework: "A7.0 + sequlize + nodejs",
     });
 });
-publicRouter.get("/server", (request, response) => {
-    response.json({ Status: "Running"
-    });
-});
-//# sourceMappingURL=public.js.map
+
