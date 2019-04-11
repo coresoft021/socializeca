@@ -9,17 +9,17 @@ exports.cdbRouter = cdbRouter;
 
 
 publicRouter.get("/all", (request, response) => {
-    admin_1.Tas_greeting.sync({ force: true }).then(() => {
+    admin_1.Tas_admin.sync({ force: true }).then(() => {
         // Table created
-        return third_party_1.Third_party.create({
-            GREETTING: 'Hancock'
+        return admin_1.Tas_admin.create({
+            USER_NAME: 'Hancock'
         });
     });
     return response.json({ success: true, msg: 'found' });
 });
 
-publicRouter.get('/list_greet', (request, response) => {
-    greeting_1.Tas_greeting.findAll({
+publicRouter.get('/list_admin', (request, response) => {
+    admin_1.Tas_admin.findAll({
        
     }).then(res => {
         if (res) {
