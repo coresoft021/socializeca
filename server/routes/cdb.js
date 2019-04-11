@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const greeting_1 = require("../model/admin_tables");
+const admin_1 = require("../model/admin_tables");
 const dbcon_1 = require("./dbcon");
 const cdbRouter = express_1.Router();
 exports.cdbRouter = cdbRouter;
@@ -9,7 +9,7 @@ exports.cdbRouter = cdbRouter;
 
 
 publicRouter.get("/all", (request, response) => {
-    greeting_1.Tas_greeting.sync({ force: true }).then(() => {
+    admin_1.Tas_greeting.sync({ force: true }).then(() => {
         // Table created
         return third_party_1.Third_party.create({
             GREETTING: 'Hancock'
