@@ -23,10 +23,7 @@
 
 
 
-
 <div style="font-size: 12px;" *ngIf="view" >
-
-
 
 <!-- <div class="container">
   <div class="row"> -->
@@ -38,21 +35,21 @@
             <tr>
               <th>SI</th>
                           
-              <th data-priority="2">Item</th>
-              <th data-priority="3"> Quantity </th>
+              <th data-priority="2">First Name</th>
+              <th data-priority="3"> Last Name </th>
+              <th data-priority="3"> Email </th>
            
             </tr>
           </thead>
           <tbody >
-            <tr *ngFor = "let item of post_invo.item ">
+            <tr *ngFor = "let item of view_model.item ">
               <td>{{item.SI}}</td>
-              <td>{{item.PRODUCT_NAME }}</td>
-              <td>{{item.QUANTITY}}</td>
-             
+              <td>{{item.FIRST_NAME }}</td>
+              <td>{{item.LAST_NAME}}</td>
+              <td>{{item.EMAIL}}</td>
               
             </tr>
-           
-           
+                      
           </tbody>
           <tfoot>
            
@@ -64,7 +61,6 @@
 
 
 </div>    
-
 
 
 
